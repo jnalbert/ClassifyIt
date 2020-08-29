@@ -1,21 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import {useState} from 'react'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+import useCachedResources from './hooks/useCachedResources';
+import useColorScheme from './hooks/useColorScheme';
+import Navigation from './navigation';
+
+const App = () => {
+  const isLoadingComplete = useCachedResources();
+  const colorScheme = useColorScheme();
+  const [state, setstate] = useState({test: 1})
+
+
+  if (!isLoadingComplete) {
+    return null;
+  } else {
+    return (
+      <SafeAreaProvider>
+        <Navigation colorScheme={colorScheme} />
+        <StatusBar />
+      </SafeAreaProvider>
+    );
+  }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
