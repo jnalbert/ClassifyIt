@@ -124,10 +124,11 @@ class PictureScreen extends React.Component {
     }
 
   renderPrediction = (prediction) => {
+    const prob = prediction.probability * 100
     return (
       <View style={styles.welcomeContainer}>
         <Text key={prediction.className} style={styles.text}>
-          Prediction: {prediction.className} {', '} Probability: {prediction.probability * 100}%
+          Prediction: {prediction.className} {', '} Probability: {prob.toFixed(1)}%
         </Text>
       </View>
     )

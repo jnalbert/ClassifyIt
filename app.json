@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "ClassifyIt",
+    "name": "Classify It",
     "slug": "ClassifyIt",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -22,6 +22,8 @@
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
-    }
+    },
+    "description": "Image classification app.",
+    "githubUrl": "https://github.com/jnalbert/ClassifyIt.git"
   }
 }
