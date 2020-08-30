@@ -7,6 +7,11 @@ import '@tensorflow/tfjs-react-native';
 
 import * as mobilenet from '@tensorflow-models/mobilenet'
 
+
+
+
+
+
 import Constants from 'expo-constants'
 import * as Permissions from 'expo-permissions'
 import * as jpeg from 'jpeg-js'
@@ -31,7 +36,7 @@ class PictureScreen extends React.Component {
 
     this.model = await mobilenet.load({
       version: 2,
-      alpha: 0.5
+      alpha: 1.00
     }); // preparing MobileNet model
     this.setState({ isModelReady: true });
 
@@ -145,17 +150,17 @@ class PictureScreen extends React.Component {
           <Image
             source={
               __DEV__
-                ? require('../assets/images/tfjs.jpg')
-                : require('../assets/images/tfjs.jpg')
+                ? require('../assets/images/camera.png')
+                : require('../assets/images/camera.png')
             }
             style={styles.welcomeImage}
           />
 
         <StatusBar barStyle='light-content' />
         <View style={styles.loadingContainer}>
-          <Text style={styles.text}>
-            TensorFlow.js ready? {isTfReady ? <Text>✅</Text> : ''}
-          </Text>
+          <Text style={styles.text}></Text>
+          {//   TensorFlow.js ready? {isTfReady ? <Text>✅</Text> : ''}
+        }
 
           <View style={styles.loadingModelContainer}>
             <Text style={styles.text}>MobileNet model ready? </Text>
